@@ -21,9 +21,9 @@ public class TransactionJpaRepository implements TransactionRepository {
     @Override
     public List<TransactionTO> getAllByDate(String date) {
         StringBuilder sb = new StringBuilder();
-        sb.append(" SELECT s ");
+        sb.append(" SELECT t ");
         sb.append(" FROM TransactionEntity t ");
-        sb.append(" WHERE t.date = :date");
+        sb.append(" WHERE t.dataTrn = :date");
 
         TypedQuery<TransactionEntity> query = entityManager.createQuery(sb.toString(), TransactionEntity.class);
         query.setParameter("date", date);
@@ -36,7 +36,7 @@ public class TransactionJpaRepository implements TransactionRepository {
     @Override
     public List<TransactionTO> getAllByStore(String store) {
         StringBuilder sb = new StringBuilder();
-        sb.append(" SELECT s ");
+        sb.append(" SELECT t ");
         sb.append(" FROM TransactionEntity t ");
         sb.append(" WHERE t.codlojasitef = :store");
 

@@ -1,0 +1,30 @@
+keycloak:
+    auth-server-url: http://selcdspkclk001.paulista.local:8080/auth
+    ssl-required: external
+    realm: fiservgateway
+    resource: sitefweb
+    credentials:
+        secret: 06d06da2-0eb2-4716-8ee3-c9c5fdb431ae
+    bearer-only: false
+
+spring:
+    security:
+        oauth2:
+            resourceserver:
+                jwt:
+                    issuer-uri: http://selcdspkclk001.paulista.local:8080/auth/realms/fiservgateway
+    datasource:
+        url: jdbc:oracle:thin:@SEOCDSPRDS001.paulista.local:1521/PDB191
+        username: multiconcsitefwebclient3_web
+        password: multiconcsitefwebclient3_web
+    jpa:
+        properties:
+            hibernate:
+                dialect: org.hibernate.dialect.OracleDialect
+        hibernate:
+            ddl-auto: none
+
+logging:
+    level:
+        org.springframework.security: DEBUG
+        org.keycloak: DEBUG

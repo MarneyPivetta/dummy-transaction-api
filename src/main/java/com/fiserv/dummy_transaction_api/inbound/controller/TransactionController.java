@@ -21,7 +21,8 @@ public class TransactionController {
     @GetMapping("/findbydate")
     public ResponseEntity<List<TransactionTO>> getAllTransactionByDate(@RequestParam(name = "date") String date) {
         try {
-            return ResponseEntity.ok(service.getAllByDate(date));
+            List<TransactionTO> transactions = service.getAllByDate(date);
+            return ResponseEntity.ok(transactions);
         } catch (Exception e) {
             e.printStackTrace();
             return ResponseEntity.internalServerError().build();
@@ -31,7 +32,8 @@ public class TransactionController {
     @GetMapping("/findbystore")
     public ResponseEntity<List<TransactionTO>> getAllTransactionByStore(@RequestParam(name = "store") String store) {
         try {
-            return ResponseEntity.ok(service.getAllByStore(store));
+            List<TransactionTO> transactions = service.getAllByStore(store);
+            return ResponseEntity.ok(transactions);
         } catch (Exception e) {
             e.printStackTrace();
             return ResponseEntity.internalServerError().build();

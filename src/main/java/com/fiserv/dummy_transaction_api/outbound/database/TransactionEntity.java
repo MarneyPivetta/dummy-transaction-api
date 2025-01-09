@@ -2,27 +2,23 @@ package com.fiserv.dummy_transaction_api.outbound.database;
 
 import com.fiserv.dummy_transaction_api.core.domain.TransactionTO;
 import jakarta.persistence.Entity;
-import lombok.Data;
+import jakarta.persistence.Id;
 
-import java.math.BigDecimal;
+import jakarta.persistence.Table;
 
 @Entity
-@Data
+@Table(name = "logtef")
 public class TransactionEntity {
 
+    @Id
     private String codlojasitef;
-    private String dateTrn;
-    private int codsit;
+    private String dataTrn;
+    private Integer codSit;
+    private String nsuSitef;
     private String seCliente;
-    private BigDecimal valorVenda;
+    private Long valorTrn;
 
     public TransactionTO toDomain() {
-        return TransactionTO.builder()
-                .codlojasitef(codlojasitef)
-                .codsit(codsit)
-                .date(dateTrn)
-                .seCliente(seCliente)
-                .value(valorVenda)
-                .build();
+        return new TransactionTO(codlojasitef, dataTrn, codSit, nsuSitef, seCliente, valorTrn);
     }
 }
