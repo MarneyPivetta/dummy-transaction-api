@@ -1,8 +1,8 @@
 package com.fiserv.dummy_transaction_api.inbound.controller;
 
-import com.fiserv.dummy_transaction_api.core.domain.TransactionTO;
-import com.fiserv.dummy_transaction_api.core.ports.TransactionService;
-import org.springframework.http.HttpStatus;
+import com.fiserv.dummy_transaction_api.core.transaction.TransactionTO;
+import com.fiserv.dummy_transaction_api.core.ports.ITransactionService;
+import com.fiserv.dummy_transaction_api.core.user.UserTO;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -12,16 +12,17 @@ import java.util.List;
 @RequestMapping("/api/transaction")
 public class TransactionController {
 
-    private final TransactionService service;
+    private final ITransactionService service;
 
-    public TransactionController(TransactionService service) {
+    public TransactionController(ITransactionService service) {
         this.service = service;
     }
 
     @GetMapping("/findbydate")
-    public ResponseEntity<List<TransactionTO>> getAllTransactionByDate(@RequestParam(name = "date") String date) {
+    public ResponseEntity<List<TransactionTO>> getAllTransactionByDate(@RequestAttribute(name = "authUser") UserTO authUser,
+                                                                       @RequestParam(name = "date") String date) {
         try {
-            List<TransactionTO> transactions = service.getAllByDate(date);
+            List<TransactionTO> transactions = service.getAllByDate(date, authUser.getSeClient());
             return ResponseEntity.ok(transactions);
         } catch (Exception e) {
             e.printStackTrace();
@@ -30,9 +31,10 @@ public class TransactionController {
     }
 
     @GetMapping("/findbystore")
-    public ResponseEntity<List<TransactionTO>> getAllTransactionByStore(@RequestParam(name = "store") String store) {
+    public ResponseEntity<List<TransactionTO>> getAllTransactionByStore(@RequestAttribute(name = "authUser") UserTO authUser,
+                                                                        @RequestParam(name = "store") String store) {
         try {
-            List<TransactionTO> transactions = service.getAllByStore(store);
+            List<TransactionTO> transactions = service.getAllByStore(store, authUser.getSeClient());
             return ResponseEntity.ok(transactions);
         } catch (Exception e) {
             e.printStackTrace();

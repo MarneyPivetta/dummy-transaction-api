@@ -1,4 +1,4 @@
-package com.fiserv.dummy_transaction_api.core.domain;
+package com.fiserv.dummy_transaction_api.core.transaction;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonInclude;
@@ -13,24 +13,24 @@ public class TransactionTO implements Serializable {
 
     private static final long serialVersionUID = 5698726765918161543L;
 
-    private String codlojasitef;
+    private String sitefStoreCode;
     private String date;
     private Integer codsit;
     private String nsuSitef;
-    private String seCliente;
+    private String seClient;
     private Long value;
 
-    public TransactionTO(String codlojasitef, String date, Integer codsit, String nsuSitef, String seCliente, Long value) {
-        this.codlojasitef = codlojasitef;
+    public TransactionTO(String sitefStoreCode, String date, Integer codsit, String nsuSitef, String seClient, Long value) {
+        this.sitefStoreCode = sitefStoreCode;
         this.date = date;
         this.codsit = codsit;
         this.nsuSitef = nsuSitef;
-        this.seCliente = seCliente;
+        this.seClient = seClient;
         this.value = value;
     }
 
-    public String getCodlojasitef() {
-        return codlojasitef;
+    public String getSitefStoreCode() {
+        return sitefStoreCode;
     }
 
     public String getDate() {
@@ -45,8 +45,8 @@ public class TransactionTO implements Serializable {
         return nsuSitef;
     }
 
-    public String getSeCliente() {
-        return seCliente;
+    public String getSeClient() {
+        return seClient;
     }
 
     public Long getValue() {

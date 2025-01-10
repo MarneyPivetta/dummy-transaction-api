@@ -1,8 +1,14 @@
 spring:
+    security:
+        oauth2:
+            resourceserver:
+                jwt:
+                    jwk-set-uri: http://selcdspkclk001.paulista.local:8080/auth/realms/fiservgateway/protocol/openid-connect/certs
     datasource:
         url: jdbc:oracle:thin:@SEOCDSPRDS001.paulista.local:1521/PDB191
         username: multiconcsitefwebclient3_web
         password: multiconcsitefwebclient3_web
+
 logging:
     level:
         org.springframework.security: DEBUG
