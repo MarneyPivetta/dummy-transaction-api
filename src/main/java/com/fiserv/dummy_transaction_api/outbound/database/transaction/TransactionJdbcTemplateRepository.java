@@ -1,8 +1,9 @@
 package com.fiserv.dummy_transaction_api.outbound.database.transaction;
 
-import com.fiserv.dummy_transaction_api.core.ports.ITransactionRepository;
-import com.fiserv.dummy_transaction_api.core.transaction.TransactionSQL;
-import com.fiserv.dummy_transaction_api.core.transaction.TransactionTO;
+import com.fiserv.dummy_transaction_api.core.ports.transaction.ITransactionRepository;
+import com.fiserv.dummy_transaction_api.core.ports.transaction.ITransactionSQL;
+import com.fiserv.dummy_transaction_api.core.application.transaction.TransactionTO;
+import com.fiserv.dummy_transaction_api.core.application.user.UserTO;
 import com.fiserv.dummy_transaction_api.util.sql.SqlQuery;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -14,23 +15,23 @@ import org.springframework.stereotype.Repository;
 public class TransactionJdbcTemplateRepository implements ITransactionRepository {
 
 	private final NamedParameterJdbcTemplate namedParametersJdbcTemplate;
-	private final TransactionSQL transactionSQL;
+	private final ITransactionSQL transactionSQL;
 
-	public TransactionJdbcTemplateRepository(NamedParameterJdbcTemplate namedParametersJdbcTemplate, TransactionSQL transactionSQL) {
+	public TransactionJdbcTemplateRepository(NamedParameterJdbcTemplate namedParametersJdbcTemplate, ITransactionSQL transactionSQL) {
 		this.namedParametersJdbcTemplate = namedParametersJdbcTemplate;
 		this.transactionSQL = transactionSQL;
 	}
 
 	@Override
-	public List<TransactionTO> getAllByDate(String date, String seClient) {
-		SqlQuery query = transactionSQL.getAllByDate(date, seClient);
+	public List<TransactionTO> getAllByDate(String date, UserTO user) {
+		SqlQuery query = transactionSQL.getAllByDate(date, user);
 
 		return namedParametersJdbcTemplate.query(query.sql, query.params, this::mapTransaction);
 	}
 
 	@Override
-	public List<TransactionTO> getAllByStore(String store, String seClient) {
-		SqlQuery query = transactionSQL.getAllByStore(store, seClient);
+	public List<TransactionTO> getAllByStore(String store, UserTO user) {
+		SqlQuery query = transactionSQL.getAllByStore(store, user);
 
 		return namedParametersJdbcTemplate.query(query.sql, query.params, this::mapTransaction);
 	}

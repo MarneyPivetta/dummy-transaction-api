@@ -3,7 +3,7 @@ spring:
         oauth2:
             resourceserver:
                 jwt:
-                    jwk-set-uri: http://selcdspkclk001.paulista.local:8080/auth/realms/fiservgateway/protocol/openid-connect/certs
+                    issuer-uri: http://selcdspkclk001.paulista.local:8080/auth/realms/fiservgateway
     datasource:
         url: jdbc:oracle:thin:@SEOCDSPRDS001.paulista.local:1521/PDB191
         username: multiconcsitefwebclient3_web
