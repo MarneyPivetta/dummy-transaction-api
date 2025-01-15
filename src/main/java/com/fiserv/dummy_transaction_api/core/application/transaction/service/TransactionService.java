@@ -1,6 +1,7 @@
-package com.fiserv.dummy_transaction_api.core.application.transaction;
+package com.fiserv.dummy_transaction_api.core.application;
 
-import com.fiserv.dummy_transaction_api.core.application.user.UserTO;
+import com.fiserv.dummy_transaction_api.core.domain.TransactionTO;
+import com.fiserv.dummy_transaction_api.core.domain.UserTO;
 import com.fiserv.dummy_transaction_api.core.ports.transaction.ITransactionRepository;
 import com.fiserv.dummy_transaction_api.core.ports.transaction.ITransactionService;
 import org.springframework.stereotype.Service;
