@@ -1,4 +1,4 @@
-package com.fiserv.dummy_transaction_api.core.application.user;
+package com.fiserv.dummy_transaction_api.core.domain;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonInclude;

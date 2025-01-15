@@ -1,8 +1,7 @@
 package com.fiserv.dummy_transaction_api.outbound.database.user;
 
 import com.fiserv.dummy_transaction_api.core.ports.user.IUserRepository;
-import com.fiserv.dummy_transaction_api.core.application.user.UserSQL;
-import com.fiserv.dummy_transaction_api.core.application.user.UserTO;
+import com.fiserv.dummy_transaction_api.core.domain.UserTO;
 import com.fiserv.dummy_transaction_api.util.sql.SqlQuery;
 import org.springframework.jdbc.core.namedparam.NamedParameterJdbcTemplate;
 import org.springframework.stereotype.Repository;

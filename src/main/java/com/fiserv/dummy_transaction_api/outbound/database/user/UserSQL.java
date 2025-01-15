@@ -1,13 +1,12 @@
-package com.fiserv.dummy_transaction_api.core.application.user;
+package com.fiserv.dummy_transaction_api.outbound.database.user;
 
-import com.fiserv.dummy_transaction_api.core.ports.user.IUserSQL;
 import com.fiserv.dummy_transaction_api.util.sql.SqlQuery;
 import java.util.HashMap;
 import java.util.Map;
 import org.springframework.stereotype.Component;
 
 @Component
-public class UserSQL implements IUserSQL {
+public class UserSQL {
 
 	public SqlQuery getUserByLogin(String login) {
 		StringBuilder sb = new StringBuilder();

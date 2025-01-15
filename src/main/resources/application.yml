@@ -5,9 +5,12 @@ spring:
                 jwt:
                     issuer-uri: http://selcdspkclk001.paulista.local:8080/auth/realms/fiservgateway
     datasource:
-        url: jdbc:oracle:thin:@SEOCDSPRDS001.paulista.local:1521/PDB191
-        username: multiconcsitefwebclient3_web
-        password: multiconcsitefwebclient3_web
+        #url: jdbc:oracle:thin:@SEOCDSPRDS001.paulista.local:1521/PDB191
+        #username: multiconcsitefwebclient3_web
+        #password: multiconcsitefwebclient3_web
+        username: carrefoursit_own
+        password: carrefoursit_own
+        url: jdbc:oracle:thin:@srv-tesla.paulista.local:1523:sw194
 
 logging:
     level:

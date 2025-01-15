@@ -1,6 +1,6 @@
 package com.fiserv.dummy_transaction_api.configuration;
 
-import com.fiserv.dummy_transaction_api.core.application.user.UserTO;
+import com.fiserv.dummy_transaction_api.core.domain.UserTO;
 import com.fiserv.dummy_transaction_api.core.ports.user.IUserService;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
@@ -29,9 +29,10 @@ public class WebConfiguration implements WebMvcConfigurer {
 
 		@Override
 		public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object handler) {
-			Jwt jwt = (Jwt)SecurityContextHolder.getContext().getAuthentication().getCredentials();
+			//Jwt jwt = (Jwt)SecurityContextHolder.getContext().getAuthentication().getCredentials();
 
-			UserTO user = userService.getUser(jwt.getClaimAsString("preferred_username"));
+			//UserTO user = userService.getUser(jwt.getClaimAsString("preferred_username"));
+			UserTO user = new UserTO("supervisor", "123456");
 			request.setAttribute("authUser", user);
 
 			return true;
