@@ -1,6 +1,6 @@
-package com.fiserv.dummy_transaction_api.outbound.database.user;
+package com.fiserv.dummy_transaction_api.adapters.outbound.database.user;
 
-import com.fiserv.dummy_transaction_api.util.sql.SqlQuery;
+import com.fiserv.dummy_transaction_api.basic.sql.SqlQuery;
 import java.util.HashMap;
 import java.util.Map;
 import org.springframework.stereotype.Component;

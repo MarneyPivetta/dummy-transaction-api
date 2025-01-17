@@ -1,8 +1,8 @@
-package com.fiserv.dummy_transaction_api.outbound.database.user;
+package com.fiserv.dummy_transaction_api.adapters.outbound.database.user;
 
 import com.fiserv.dummy_transaction_api.core.ports.user.IUserRepository;
-import com.fiserv.dummy_transaction_api.core.domain.UserTO;
-import com.fiserv.dummy_transaction_api.util.sql.SqlQuery;
+import com.fiserv.dummy_transaction_api.core.domain.UserDTO;
+import com.fiserv.dummy_transaction_api.basic.sql.SqlQuery;
 import org.springframework.jdbc.core.namedparam.NamedParameterJdbcTemplate;
 import org.springframework.stereotype.Repository;
 
@@ -18,14 +18,14 @@ public class UserJdbcTemplateRepository implements IUserRepository {
 	}
 
 	@Override
-	public UserTO findUserByLogin(String login) {
+	public UserDTO findUserByLogin(String login) {
 		SqlQuery query = userSQL.getUserByLogin(login);
 
 		return namedParametersJdbcTemplate.queryForObject(query.sql, query.params, (rs, numRow) -> {
 			String userLogin = rs.getString("login");
 			String seClient = rs.getString("se_cliente");
 
-			return new UserTO(userLogin, seClient);
+			return new UserDTO(userLogin, seClient);
 		});
 	}
 }

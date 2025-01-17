@@ -9,14 +9,14 @@ import java.io.Serializable;
 @JsonInclude(JsonInclude.Include.NON_NULL)
 @JsonIgnoreProperties(ignoreUnknown = true)
 @JsonNaming(PropertyNamingStrategies.SnakeCaseStrategy.class)
-public class UserTO implements Serializable {
+public class UserDTO implements Serializable {
 
 	private static final long serialVersionUID = 5698726765918161543L;
 
 	private String login;
 	private String seClient;
 
-	public UserTO(String login, String seClient) {
+	public UserDTO(String login, String seClient) {
 		this.login = login;
 		this.seClient = seClient;
 	}

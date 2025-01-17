@@ -12,6 +12,8 @@ spring:
         password: carrefoursit_own
         url: jdbc:oracle:thin:@srv-tesla.paulista.local:1523:sw194
 
-logging:
-    level:
-        org.springframework.security: DEBUG
+server:
+    servlet:
+        context-path: /transaction-api
+
+

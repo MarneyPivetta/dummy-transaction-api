@@ -1,7 +1,7 @@
-package com.fiserv.dummy_transaction_api.outbound.database.transaction;
+package com.fiserv.dummy_transaction_api.adapters.outbound.database.transaction;
 
-import com.fiserv.dummy_transaction_api.core.domain.UserTO;
-import com.fiserv.dummy_transaction_api.util.sql.SqlQuery;
+import com.fiserv.dummy_transaction_api.core.domain.UserDTO;
+import com.fiserv.dummy_transaction_api.basic.sql.SqlQuery;
 import java.util.HashMap;
 import java.util.Map;
 import org.springframework.stereotype.Component;
@@ -9,7 +9,7 @@ import org.springframework.stereotype.Component;
 @Component
 public class TransactionSQL {
 
-	public SqlQuery getAllByDate(String date, UserTO user) {
+	public SqlQuery getAllByDate(String date, UserDTO user) {
 		StringBuilder sb = new StringBuilder();
 		sb.append(" SELECT l.nsu_sitef, l.data_trn, l.cod_sit, l.codlojasitef, l.se_cliente, l.valor_trn ");
 		sb.append(" FROM logtef l ");
@@ -23,7 +23,7 @@ public class TransactionSQL {
 		return new SqlQuery(sb.toString(), params);
 	}
 
-	public SqlQuery getAllByStore(String sitefStoreCode, UserTO user) {
+	public SqlQuery getAllByStore(String sitefStoreCode, UserDTO user) {
 		StringBuilder sb = new StringBuilder();
 		sb.append(" SELECT l.nsu_sitef, l.data_trn, l.cod_sit, l.codlojasitef, l.se_cliente, l.valor_trn ");
 		sb.append(" FROM logtef l ");

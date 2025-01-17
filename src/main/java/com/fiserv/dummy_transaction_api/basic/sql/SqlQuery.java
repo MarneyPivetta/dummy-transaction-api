@@ -1,4 +1,4 @@
-package com.fiserv.dummy_transaction_api.util.sql;
+package com.fiserv.dummy_transaction_api.basic.sql;
 
 import java.util.Map;
 

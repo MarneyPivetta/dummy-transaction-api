@@ -1,8 +1,8 @@
-package com.fiserv.dummy_transaction_api.outbound.database.transaction;
+package com.fiserv.dummy_transaction_api.adapters.outbound.database.transaction;
 
 import com.fiserv.dummy_transaction_api.core.ports.transaction.ITransactionRepository;
-import com.fiserv.dummy_transaction_api.core.domain.TransactionTO;
-import com.fiserv.dummy_transaction_api.util.sql.SqlQuery;
+import com.fiserv.dummy_transaction_api.core.domain.TransactionDTO;
+import com.fiserv.dummy_transaction_api.basic.sql.SqlQuery;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.List;
@@ -21,12 +21,12 @@ public class TransactionJdbcTemplateRepository implements ITransactionRepository
 	}
 
 	@Override
-	public List<TransactionTO> executeTransactionQuery(SqlQuery query) {
+	public List<TransactionDTO> executeTransactionQuery(SqlQuery query) {
 		return namedParametersJdbcTemplate.query(query.sql, query.params, this::mapTransaction);
 	}
 
-	private TransactionTO mapTransaction(ResultSet rs, int rowNum) throws SQLException {
-		return new TransactionTO( //
+	private TransactionDTO mapTransaction(ResultSet rs, int rowNum) throws SQLException {
+		return new TransactionDTO( //
 				rs.getLong("cod_sit"), //
 				rs.getString("data_trn"), //
 				rs.getString("nsu_sitef"), //

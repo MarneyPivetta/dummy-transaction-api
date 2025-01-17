@@ -1,11 +1,11 @@
 package com.fiserv.dummy_transaction_api.core.application.transaction.repository.querybuilder;
 
-import com.fiserv.dummy_transaction_api.core.domain.TransactionFilterTO;
+import com.fiserv.dummy_transaction_api.core.domain.TransactionFilterDTO;
 
 public class SQLBuilderRecarga implements ISQLBuilder {
 
 	@Override
-	public String findAllByDate( TransactionFilterTO filter) {
+	public String findAllByDate( TransactionFilterDTO filter) {
 		StringBuilder query = new StringBuilder();
 		query.append(" SELECT ");
 		select(query);

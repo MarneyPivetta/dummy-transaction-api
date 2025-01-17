@@ -1,9 +1,9 @@
 package com.fiserv.dummy_transaction_api.core.ports.user;
 
-import com.fiserv.dummy_transaction_api.core.domain.UserTO;
+import com.fiserv.dummy_transaction_api.core.domain.UserDTO;
 
 public interface IUserService {
 
-	UserTO getUser(String login);
+	UserDTO getUser(String login);
 
 }

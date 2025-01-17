@@ -2,14 +2,13 @@ package com.fiserv.dummy_transaction_api.core.application.transaction.repository
 
 import com.fiserv.dummy_transaction_api.core.application.transaction.enumeration.EnvProductType;
 import com.fiserv.dummy_transaction_api.core.application.transaction.repository.querybuilder.*;
-import com.fiserv.dummy_transaction_api.core.domain.TransactionFilterTO;
-import com.fiserv.dummy_transaction_api.util.date.DateUtil;
-import com.fiserv.dummy_transaction_api.util.sql.SqlQuery;
+import com.fiserv.dummy_transaction_api.core.domain.TransactionFilterDTO;
+import com.fiserv.dummy_transaction_api.basic.util.DateUtil;
+import com.fiserv.dummy_transaction_api.basic.sql.SqlQuery;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-import java.util.function.Consumer;
 import java.util.function.Function;
 
 public class TransactionSQL {
@@ -23,14 +22,14 @@ public class TransactionSQL {
 		this.setupBuilders();
 	}
 
-	public SqlQuery findAllByDate(TransactionFilterTO filter) {
+	public SqlQuery findAllByDate(TransactionFilterDTO filter) {
 		return new SqlQuery(
 				buildQuery(builder -> builder.findAllByDate(filter)),
 				buildParams(filter)
 		);
 	}
 
-	private Map<String, Object> buildParams(TransactionFilterTO filter) {
+	private Map<String, Object> buildParams(TransactionFilterDTO filter) {
 		Map<String, Object> params = new HashMap<>();
 
 		params.put("cod_usuario", "supervisor");
